@@ -12,7 +12,7 @@ class Order extends Base{
     var allParams = {
       url: 'order/create',
       type: 'post',
-      data: { products: param},
+      data: {products: param},
       sCallback: function (data) {
         that.execSetStorageSync(true);
         callback && callback(true, data);
@@ -73,8 +73,8 @@ class Order extends Base{
       url: 'order/by_user',
       data: {page: pageIndex},
       type: 'get',
-      sCallback: function (data) {
-        callback && callback(data);
+      sCallback: function (res) {
+        callback && callback(res.data);
       }
     };
     this.request(allParams);

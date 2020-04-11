@@ -70,8 +70,7 @@ Page({
   _getOrders:function(callback){
     order.getOrders(this.data.pageIndex, (res)=>{
       var data = res.data;
-
-      if(data.length>0){
+      if(data){
         this.data.orderArr.push.apply(this.data.orderArr,data);
         this.setData({
           orderArr: this.data.orderArr
@@ -159,12 +158,18 @@ Page({
           totalDetail: address.setAddressInfo(res)
         }
 
-        that._bindAddressInfo(addressInfo)
-
         // 保存地址
-        address.submitAddress(res, (flag) => {
+        address.submitAddress(res, (flag,data) => {
           if (!flag) {
-            that.showTips('操作提示', '地址信息更新失败！');
+            if(data.msg){
+              for (let key in data.msg){
+                that.showTips('操作提示', data.msg[key]);
+              }
+            }else{
+              that.showTips('操作提示', '地址信息更新失败！');
+            }
+          }else{
+            that._bindAddressInfo(addressInfo)
           }
         });
       }

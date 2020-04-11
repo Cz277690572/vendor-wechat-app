@@ -24,7 +24,6 @@ class Base{
       },
       method: params.type,
       success: function(res) {
-
         var code = res.statusCode.toString();
         var startChar = code.charAt(0);
 

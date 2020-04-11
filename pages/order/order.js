@@ -60,8 +60,10 @@ Page({
           account: data.total_price,
           basicInfo: {
             orderTime: data.create_time,
-            orderNo: data.order_no
+            orderNo: data.order_no,
+            id: data.id,
           },
+          id:id
         });
 
         // 快照地址
@@ -87,12 +89,18 @@ Page({
           totalDetail: address.setAddressInfo(res)
         }
 
-        that._bindAddressInfo(addressInfo)
-
         // 保存地址
         address.submitAddress(res, (flag,data) => {
           if(!flag){
-            that.showTips('操作提示','地址信息更新失败！');
+            if(data.msg){
+              for (let key in data.msg){
+                that.showTips('操作提示', data.msg[key]);
+              }
+            }else{
+              that.showTips('操作提示', '地址信息更新失败！');
+            }
+          }else{
+            that._bindAddressInfo(addressInfo)
           }
         });
       }
@@ -139,8 +147,21 @@ Page({
     if(this.data.orderStatus == 0){
       this._firstTimePay();
     } else {
-      this._oneMoresTimePay();
+      this._oneMoresTimePay(this.data.id);
     }
+  },
+
+  /**从我的订单重新发起发起支付**/
+  _oneMoresTimePay: function(id){
+    order.execPay(id, (statusCode) => {
+      if(statusCode != 0){
+        var flag = statusCode == 2;
+        wx.navigateTo({
+          url: '../pay-result/pay-result?id=' + id
+              + '&flag=' + flag + '&from=order'
+        });
+      }
+    });
   },
 
   /**第一次支付 */
