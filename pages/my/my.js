@@ -107,8 +107,8 @@ Page({
 
   _execPay: function (id, index) {
     var that = this;
-    order.execPay(id, (statusCode) => {
-      if(statusCode > 0){
+    order.execPay(id, (statusCode,data) => {
+      if(statusCode != 0){
         var flag = statusCode == 2;
       
         // 更新订单显示状态

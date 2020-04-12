@@ -39,16 +39,19 @@ class Order extends Base{
             'signType': data.signType,
             'paySign': data.paySign,
             success: function () {
-              callback && callback(2);
+              callback && callback(2,data);
             },
             fail: function() {
-              callback && callback(1);
+              callback && callback(1,data);
             }
           });
         } 
         else {
-          callback && callback(1);
+          callback && callback(1,data);
         }
+      },
+      eCallback: function (data) {
+        callback && callback(0,data);
       }
     };
     this.request(allParams);

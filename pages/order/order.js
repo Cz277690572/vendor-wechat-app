@@ -153,12 +153,24 @@ Page({
 
   /**从我的订单重新发起发起支付**/
   _oneMoresTimePay: function(id){
-    order.execPay(id, (statusCode) => {
-      if(statusCode != 0){
+    order.execPay(id, (statusCode,data) => {
+      console.log(data)
+      if(statusCode != 0)
+      {
         var flag = statusCode == 2;
         wx.navigateTo({
           url: '../pay-result/pay-result?id=' + id
               + '&flag=' + flag + '&from=order'
+        });
+      }
+      else
+      {
+        wx.showModal({
+          title: '下单失败',
+          content: data.msg,
+          showCancel: false,
+          success: function () {
+          }
         });
       }
     });
@@ -185,8 +197,8 @@ Page({
           title: '下单失败',
           content: data.msg,
           showCancel: false,
-          success: function (res) {
-            that.editAddress()
+          success: function (data) {
+            // that.editAddress()
           }
         });
         return
@@ -250,7 +262,7 @@ Page({
    */
   _execPay: function(id) {
     var that = this;
-    order.execPay(id, (statusCode) => {
+    order.execPay(id, (statusCode,data) => {
       if(statusCode != 0){
         // 将已经下单的商品从购物车删除
         that.deleteProducts();
@@ -258,6 +270,14 @@ Page({
         wx.navigateTo({
           url: '../pay-result/pay-result?id=' + id
           + '&flag=' + flag + '&from=order'
+        });
+      }else{
+        wx.showModal({
+          title: '下单失败',
+          content: data.msg,
+          showCancel: false,
+          success: function () {
+          }
         });
       }
     });

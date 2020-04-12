@@ -23,9 +23,14 @@ Page({
    * 查看订单
    */
   viewOrder: function (event) {
-    wx.navigateBack({
-      delta: 1
-    })
+    // 返回上个页面
+    // wx.navigateBack({
+    //   delta: 1
+    // })
+
+    wx.switchTab({
+      url:'/pages/my/my'
+    });
   }
 
 })
