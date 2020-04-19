@@ -151,3 +151,13 @@
     width: 32rpx;
 }
 
+.express{
+    padding: 20rpx;
+}
+.express-no{
+    color: #9a211f;
+}
+.express-ok{
+    color: #AB956D;
+}
+

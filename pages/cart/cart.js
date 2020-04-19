@@ -1,6 +1,8 @@
 // cart.js
 import { Cart } from 'cart-model.js';
+import { Express } from '../express/express-model.js';
 var cart = new Cart();
+var express = new Express();
 Page({
 
   /**
@@ -9,6 +11,9 @@ Page({
   data: {
       selectedCounts:0, // 总的数量
       selectedTypeCounts:0, // 总的商品类型数
+      expressFullPrice:0, // 运费满减金额
+      expressPrice:0,     // 运费金额
+      expressDiffPrice:0  // 运费满减差价金额
   },
 
   /**
@@ -34,10 +39,21 @@ Page({
     this.setData({
       selectedCounts: cal.selectedCounts,
       selectedTypeCounts: cal.selectedTypeCounts,
-      account: cal.account,
+      account: cal.account.toFixed(2),
       cartData: cartData
     });
+
+    var that = this;
+    express.getServiceInfo((data)=>{
+      var expressDiffPrice = data.express_full_price - this.data.account
+      that.setData({
+        expressFullPrice: data.express_full_price,
+        expressPrice: data.express_price,
+        expressDiffPrice: expressDiffPrice.toFixed(2),
+      })
+    });
   },
+
 
   _calcTotalAccountAndCounts:function(data){
     var leg = data.length,
@@ -87,8 +103,9 @@ Page({
     this.setData({
       selectedCounts: newData.selectedCounts,
       selectedTypeCounts: newData.selectedTypeCounts,
-      account: newData.account,
-      cartData: this.data.cartData
+      account: newData.account.toFixed(2),
+      cartData: this.data.cartData,
+      expressDiffPrice: (this.data.expressFullPrice - newData.account).toFixed(2)
     });
   },
 
@@ -152,9 +169,11 @@ Page({
       })
       return
     }
+    var expressPrice = this.data.expressDiffPrice > 0 ? this.data.expressPrice : 0;
+    var account = (parseFloat(this.data.account) + parseFloat(expressPrice)).toFixed(2);
     // 需要判断是否有勾选商品
     wx.navigateTo({
-      url: '../order/order?account=' + this.data.account + '&from=cart'
+      url: '../order/order?account=' + account + '&expressPrice=' + expressPrice + '&from=cart'
     });
   }
 })

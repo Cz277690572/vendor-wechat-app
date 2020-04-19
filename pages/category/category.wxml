@@ -7,7 +7,7 @@
       <block wx:for="{{categoryTypeArr}}" wx:key="index">
         <view class="menu-item {{currentTabsIndex==index?'selected':''}}"
         bindtap="onTabsItemTap" 
-        data-index="{{index}}">
+        data-index="{{index}}" data-name="{{item.name}}">
           {{item.name}}
         </view>
       </block>

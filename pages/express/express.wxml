@@ -1,0 +1,26 @@
+<!--pages/express/express.wxml-->
+<view class="container">
+
+    <view class="no-data" wx:if="{{!no}}">
+        加载中...
+    </view>
+    <view wx:else>
+        <block wx:if="{{logisticsInfo.length > 0}}">
+            <block wx:for="{{logisticsInfo}}">
+                <view class="express-node-info">
+                    <view class="content-left">
+                    </view>
+                    <view class="content-right">
+                        <view><text>{{item.context}}</text></view>
+                        <view><text class="time">{{item.time}}</text></view>
+                    </view>
+                </view>
+            </block>
+        </block>
+        <view wx:else>
+            <view class="no-data">
+                暂无物流信息！
+            </view>
+        </view>
+    </view>
+</view>

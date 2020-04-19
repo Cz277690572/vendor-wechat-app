@@ -50,6 +50,18 @@
           </view>
         </view>
       </block>
+
+      <view class="express">
+        <block wx:if="{{expressFullPrice == expressDiffPrice}}">
+          <text class="express-no">满{{expressFullPrice}}元免运费</text>
+        </block>
+        <block wx:elif="{{expressDiffPrice > 0}}">
+          <text class="express-no">还差{{expressDiffPrice}}元免运费</text>
+        </block>
+        <block wx:else>
+          <text class="express-ok">已免运费</text>
+        </block>
+      </view>
     </view>
     <view class="footer-account-box all-accounts-box">
       <view class="all-select" ontap="toggleSelectAll" 

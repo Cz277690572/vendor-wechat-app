@@ -1,0 +1,38 @@
+/* pages/express/express.wxss */
+@import "../tpls/base.wxss";
+.container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40rpx;
+}
+
+.express-node-info{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  padding-left: 20rpx;
+  padding-right: 40rpx;
+  border-bottom: 1rpx solid #E9E9E9;
+}
+
+.express-node-info .content-left{
+}
+
+.express-node-info .content-right{
+  display: flex;
+  flex-direction: column;
+  padding: 40rpx 28rpx 10rpx 40rpx;
+  font-size: 24rpx;
+  color: #333333;
+}
+
+.express-node-info .content-right>view:first-child{
+  padding-bottom: 20rpx;
+}
+
+.express-node-info .time{
+  color: #999999;
+}

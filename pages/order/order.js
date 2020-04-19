@@ -7,12 +7,13 @@ var cart    = new Cart();
 var order   = new Order();
 var address = new Address();
 Page({
-
+ 
   /**
    * 页面的初始数据
    */
   data: {
-    id : null,
+    id: null,
+    expressPrice: 0,
   },
 
   /**
@@ -21,7 +22,7 @@ Page({
   onLoad: function (options) {
     var from = options.from;
     if(from == "cart"){
-      this._fromCart(options.account);
+      this._fromCart(options.account, options.expressPrice);
     }
     else{
       var id = options.id;
@@ -30,7 +31,7 @@ Page({
   },
 
   /**从购物车跳转过来的 */
-  _fromCart:function(account){
+  _fromCart:function(account,expressPrice){
     var productsArr;
     this.data.account = account;
     productsArr = cart.getCartDataFromLocal(true);
@@ -38,7 +39,8 @@ Page({
     this.setData({
       productsArr: productsArr,
       account: account,
-      orderStatus: 0
+      orderStatus: 0,
+      expressPrice: expressPrice,
     });
 
     /**显示收货地址 */
@@ -54,15 +56,24 @@ Page({
       // 下单后，支付成功或者失败后，点左上角返回时能够更新订单状态 所以放在onshow中
 
       order.getOrderInfoById(id, (data) => {
+        console.log(data)
         that.setData({
           orderStatus: data.status,
           productsArr: data.snap_items,
-          account: data.total_price,
+          account: data.pay_price,
           basicInfo: {
             orderTime: data.create_time,
             orderNo: data.order_no,
             id: data.id,
           },
+          expressInfo: {
+            expressCompanyCode: data.express_company_code,
+            expressCompanyTitle:data.express_company_title,
+            expressSendNo:data.express_send_no,
+            expressSendTime:data.express_send_time,
+            expressPrice:data.express_price,
+          },
+          expressPrice: data.express_price,
           id:id
         });
 
@@ -154,6 +165,7 @@ Page({
   /**从我的订单重新发起发起支付**/
   _oneMoresTimePay: function(id){
     order.execPay(id, (statusCode,data) => {
+      console.log(statusCode)
       console.log(data)
       if(statusCode != 0)
       {
@@ -293,5 +305,12 @@ Page({
     cart.delete(ids);
   },
 
+  showLogisticsInfo: function (event) {
+    var code = event.currentTarget.dataset.code;
+    var no   = event.currentTarget.dataset.no;
+    wx.navigateTo({
+      url: '../express/express?code=' + code + '&no=' + no
+    });
+  }
 
 })

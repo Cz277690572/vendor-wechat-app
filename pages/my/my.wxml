@@ -62,7 +62,7 @@
             </view>
           </view>
           <view class="order-bottom" wx:if="{{item.status==1}}">
-            <text>实付:￥{{item.total_price}}</text>
+            <text>实付:￥{{item.pay_price}}</text>
             <view class="pay" ontap="rePay" data-id="{{item.id}}" data-index="{{index}}">付款</view>
           </view>
         </view>

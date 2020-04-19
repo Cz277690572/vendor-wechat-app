@@ -6,6 +6,21 @@ class Cart extends Base{
     this._storageKeyName = 'cart';
   }
 
+  /**
+   * 获取运费信息
+   */
+  getExpressServiceInfo(callback){
+    var allParams = {
+      url: 'express/service_info',
+      sCallback: function (data) {
+        callback && callback(data);
+      },
+      eCallback: function(){
+      }
+    };
+    this.request(allParams);
+  }
+
   /*
    * 加入购物车
    * 如果之前没有这样的商品，则直接添加一条新纪录，数量为couns

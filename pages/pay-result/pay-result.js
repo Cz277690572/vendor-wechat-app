@@ -24,13 +24,13 @@ Page({
    */
   viewOrder: function (event) {
     // 返回上个页面
-    // wx.navigateBack({
-    //   delta: 1
-    // })
+    wx.navigateBack({
+      delta: 1
+    })
 
-    wx.switchTab({
-      url:'/pages/my/my'
-    });
+    // wx.switchTab({
+    //   url:'/pages/my/my'
+    // });
   }
 
 })

@@ -11,7 +11,7 @@
 .order-main{
     padding-bottom:92rpx;
 }
-.order-address-info,.order-basic-info{
+.order-address-info,.order-basic-info,.order-express-info{
     padding:20rpx 40rpx;
 }
 
@@ -38,7 +38,7 @@
     margin-left: 10rpx;
     color: #333;
 }
-.order-address-info{
+.order-address-info,.order-express-info{
     margin-bottom: 20rpx;
 }
 
@@ -83,7 +83,35 @@
     color:#999999;
 }
 
-
+.order-express-info view:first-child{
+   margin-bottom:15rpx ;
+}
+.info-title{
+  display: flex;
+  align-items: center;
+  color: #333;
+}
+.info-title image{
+  transform: rotate(0deg);
+  height: 48rpx;
+  width: 48rpx;
+  padding-right: 6rpx;
+}
+.info-link{
+  display: flex;
+  justify-content: space-between;
+}
+.info-link view:first-child{
+  padding-right: 10rpx;
+}
+.info-link-text{
+    color:#999999;
+}
+.info-link-img image{
+  transform: rotate(0deg);
+  height: 48rpx;
+  width: 48rpx;
+}
 
 .product-item{
     display: flex;
@@ -139,4 +167,9 @@
 .pay.disabled{
     background: rgba(171,149,109,0.6);
     pointer-events: auto;
+}
+
+.express-price{
+    padding: 20rpx;
+    color: #333;
 }

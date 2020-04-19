@@ -8,6 +8,7 @@ Page({
    */
   data: {
     currentTabsIndex:0,
+    title:''
   },
 
   /**
@@ -16,13 +17,12 @@ Page({
   onLoad: function (options) {
     this._loadData();
   },
-
   _loadData: function (){
     category.getCategoryType((categoryData)=>{
       this.setData({
         categoryTypeArr: categoryData
       });
-
+      
       // 一定在回调里再进行获取分类详情的方法调用
       category.getProductsByCategory(
         categoryData[0].id,(data) => {
@@ -31,13 +31,15 @@ Page({
             topImgUrl: categoryData[0].img.url,
             title: categoryData[0].name
           };
-
+         
           this.setData({
-            categoryProducts: dataObj
+            categoryProducts: dataObj,
           })
+         
         }
       );
     });
+    
   },
 
   onProductsItemTap: function (event) {
@@ -49,8 +51,10 @@ Page({
 
   onTabsItemTap: function (event) {
     var index = category.getDataSet(event, 'index');
+    var name = category.getDataSet(event, 'name');
     this.setData({
-      currentTabsIndex: index
+      currentTabsIndex: index,
+      title: name,
     });
 
     category.getProductsByCategory(
@@ -66,5 +70,6 @@ Page({
         })
       }
     );
+    
   }
 })

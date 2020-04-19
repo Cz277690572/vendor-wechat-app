@@ -125,7 +125,7 @@ Page({
         })
       } 
       else {
-        that.showTips('支付失败','商品已下架或库存不足');
+        that.showTips('支付失败',data.msg);
       }
     });
   },

@@ -39,18 +39,22 @@ class Order extends Base{
             'signType': data.signType,
             'paySign': data.paySign,
             success: function () {
+              // 微信支付成功
               callback && callback(2,data);
             },
             fail: function() {
+              // 微信支付失败,可能性太小
               callback && callback(1,data);
             }
           });
         } 
         else {
+          // 生成预支付参数错误
           callback && callback(1,data);
         }
       },
       eCallback: function (data) {
+        // 订单数据有误
         callback && callback(0,data);
       }
     };

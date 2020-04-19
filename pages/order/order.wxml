@@ -16,6 +16,8 @@
       <text class="order-status-txt unpay" wx:if="{{orderStatus==1}}">待付款</text>
       <text class="order-status-txt payed" wx:if="{{orderStatus==2}}">已付款</text>
       <text class="order-status-txt done" wx:if="{{orderStatus==3}}">已发货</text>
+      <text class="order-status-txt payed" wx:if="{{orderStatus==4}}">已付款</text>
+      <text class="order-status-txt done" wx:if="{{orderStatus==5}}">已完成</text>
     </view>
   </view>
 
@@ -48,6 +50,33 @@
     </block>
   </view>
 
+  <!--物流信息-->
+  <block wx:if="{{orderStatus == 3 || orderStatus == 5}}">
+  <view class="order-express-info" ontap="showLogisticsInfo" data-code="{{expressInfo.expressCompanyCode}}" data-no="{{expressInfo.expressSendNo}}">
+    <view class="info-title">
+      <image src="../../imgs/icon/cart@express.png"></image>
+      <text class="val">物流信息</text>
+    </view>
+    <view class="info-link">
+        <view class="info-link-text">
+          <block wx:if="{{expressInfo.expressSendNo}}">
+            <view>{{expressInfo.expressCompanyTitle}}：{{expressInfo.expressSendNo}}</view>
+          </block>
+          <block wx:if="{{expressInfo.expressSendTime}}">
+            <view>发货时间：{{expressInfo.expressSendTime}}</view>
+          </block>
+          <block wx:else>
+            <view>未发货</view>
+          </block>
+        </view>
+
+        <view class="info-link-img">
+          <image src="../../imgs/icon/link@express.png"></image>
+        </view>
+    </view>
+  </view>
+  </block>
+
   <!--列表-->
   <view class="order-main">
     <block wx:for="{{productsArr}}">
@@ -64,14 +93,23 @@
         </view>
       </view>
     </block>
+    <view class="express-price">
+      <block wx:if="{{expressPrice<=0}}">
+        <text>运费金额: 已免邮</text>
+      </block>
+      <block wx:else>
+        <text>运费金额:￥{{expressPrice}}</text>
+      </block>
     </view>
+
+  </view>
 
   <!--结算-->
   <view class="footer-account-box order-accounts">
     <view class="total-account">
       付款合计：￥{{account}}
     </view>
-    <view wx:if="{{orderStatus<=1}}" class="pay {{!addressInfo?'disabled':''}}" 
+    <view wx:if="{{orderStatus<=1}}" class="pay {{!addressInfo?'disabled':''}}"
     bindtap="pay">去付款</view>
   </view>
 </view>
