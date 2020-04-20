@@ -17,7 +17,8 @@
       <text class="order-status-txt payed" wx:if="{{orderStatus==2}}">已付款</text>
       <text class="order-status-txt done" wx:if="{{orderStatus==3}}">已发货</text>
       <text class="order-status-txt payed" wx:if="{{orderStatus==4}}">已付款</text>
-      <text class="order-status-txt done" wx:if="{{orderStatus==5}}">已完成</text>
+      <text class="order-status-txt complete" wx:if="{{orderStatus==5}}">已完成</text>
+      <text class="order-status-txt close" wx:if="{{orderStatus==6}}">已取消</text>
     </view>
   </view>
 
@@ -66,7 +67,8 @@
             <view>发货时间：{{expressInfo.expressSendTime}}</view>
           </block>
           <block wx:else>
-            <view>未发货</view>
+            <view wx:if="{{orderStatus==3}}">无物流信息</view>
+            <view wx:if="{{orderStatus==5}}">无物流信息</view>
           </block>
         </view>
 

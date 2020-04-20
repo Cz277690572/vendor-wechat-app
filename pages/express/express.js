@@ -15,13 +15,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    express.getLogisticsInfo(options.code, options.no, (data)=>{
-      that.setData({
-        logisticsInfo: data.data,
-        no: true
-      })
-    });
+    console.log(options.no)
+    if(options.no != 'null'){
+        console.log(1111)
+        var that = this;
+        express.getLogisticsInfo(options.code, options.no, (data)=>{
+          that.setData({
+            logisticsInfo: data.data,
+            no: true
+          })
+        });
+    }else{
+        this.setData({
+            logisticsInfo: [],
+            no: true
+        })
+    }
+
   },
 
   /**

@@ -48,6 +48,12 @@
 .order-status-txt.done{
     color: #57AB53;
 }
+.order-status-txt.complete{
+    color: #57AB53;
+}
+.order-status-txt.close{
+    color: #ccc;
+}
 
 .order-no-txt{
     letter-spacing: 2rpx;

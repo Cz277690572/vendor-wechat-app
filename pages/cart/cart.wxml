@@ -38,7 +38,7 @@
                   data-id="{{item.id}}" 
                   data-type="cut">-</view>
                   <view class="counts">{{item.counts}}</view>
-                  <view class="btns" bindtap="changeCounts" 
+                  <view class="btns {{item.counts==79?'disabled':''}}" bindtap="changeCounts"
                   data-id="{{item.id}}" data-type="add">+</view>
                 </view>
 
