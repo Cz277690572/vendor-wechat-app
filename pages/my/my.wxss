@@ -8,8 +8,15 @@
     color: #fff;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 30rpx;
     font-size: 28rpx;
+}
+
+.about-user-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .avatarUrl{
@@ -23,7 +30,18 @@
     margin-left: 20rpx;
 }
 
+.about-us-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 28rpx;
+}
 
+.about-us-container image{
+    width: 28rpx;
+    height: 28rpx;
+    padding-right: 14rpx;
+}
 
 .my-address{
     background-color: #fff;

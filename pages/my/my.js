@@ -44,6 +44,12 @@ Page({
     });
   },
 
+  showAbout:function() {
+    wx.navigateTo({
+      url: '../about/about'
+    });
+  },
+
   _getAddressInfo:function () {
     address.getAddress((addressInfo) => {
       this._bindAddressInfo(addressInfo);

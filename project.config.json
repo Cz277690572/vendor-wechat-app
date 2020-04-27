@@ -71,6 +71,20 @@
 					"pathName": "pages/express/express",
 					"query": "code=zhongtong&no=75331105617706",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/my",
+					"pathName": "pages/my/my",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/about/about",
+					"pathName": "pages/about/about",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

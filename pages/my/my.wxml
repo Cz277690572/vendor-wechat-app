@@ -1,11 +1,17 @@
 <!--my.wxml-->
 <view class="container my-container">
   <view class="my-header">
-    <view class="avatarUrl">
-      <open-data type="userAvatarUrl" class="avatarUrl"></open-data>
+    <view class="about-user-container">
+      <view class="avatarUrl">
+        <open-data type="userAvatarUrl" class="avatarUrl"></open-data>
+      </view>
+      <view class="nickName">
+        <open-data type="userNickName" class="nickName"></open-data>
+      </view>
     </view>
-    <view class="nickName">
-      <open-data type="userNickName" class="nickName"></open-data>
+    <view class="about-us-container" ontap="showAbout">
+      <image src="../../imgs/icon/us@about.png"></image>
+      <view><text>关于我们</text></view>
     </view>
   </view>
 
