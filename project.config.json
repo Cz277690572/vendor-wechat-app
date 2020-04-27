@@ -25,7 +25,7 @@
 		"bundle": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.4",
+	"libVersion": "2.11.0",
 	"appid": "wxcbba84a3171a22ca",
 	"projectname": "vendor-wechat-app",
 	"debugOptions": {

@@ -6,13 +6,14 @@
     </view>
     <view wx:else>
         <block wx:if="{{logisticsInfo.length > 0}}">
-            <block wx:for="{{logisticsInfo}}">
-                <view class="express-node-info">
+            <block wx:for="{{logisticsInfo}}" wx:key="index" >
+                <view class="express-node-container {{0==index?'express-node-info-current':'express-node-info'}}">
                     <view class="content-left">
+                        <view class="{{0==index?'timeline-axis-current':'timeline-axis'}}"></view>
                     </view>
-                    <view class="content-right">
-                        <view><text>{{item.context}}</text></view>
+                    <view class="{{0==index?'content-right-current':'content-right'}}">
                         <view><text class="time">{{item.time}}</text></view>
+                        <view><text>{{item.context}}</text></view>
                     </view>
                 </view>
             </block>
