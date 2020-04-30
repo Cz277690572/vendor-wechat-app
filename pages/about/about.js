@@ -1,21 +1,43 @@
 // pages/about/about.js
-import { Config } from '../../utils/config.js';
+import { About } from "./about-model";
+var about = new About();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    'logoUrl': Config.logoUrl,
-    'logoBgUrl': Config.logoBgUrl,
-    'groupWechatUrl': Config.groupWechatUrl,
-    'officialAccountWechatUrl': Config.officialAccountWechatUrl
+    'logoUrl': '',
+    'logoBgUrl': '',
+    'siteName': '',
+    'siteIntro': '',
+
+    'contactWayATitle': '',
+    'contactWayAImg': '',
+
+    'contactWayBTitle': '',
+    'contactWayBImg': '',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
+    var that = this;
+    about.getAboutUs((data)=>{
+      that.setData({
+        'logoUrl': data.site_logo,
+        'logoBgUrl': data.site_logo_bg,
+        'siteName': data.site_name,
+        'siteIntro': data.site_intro,
+
+        'contactWayATitle': data.contact_way_a_title,
+        'contactWayAImg': data.contact_way_a_img,
+
+        'contactWayBTitle': data.contact_way_b_title,
+        'contactWayBImg': data.contact_way_b_img
+      })
+    });
   },
 
   /**

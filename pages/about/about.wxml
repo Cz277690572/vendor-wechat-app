@@ -2,17 +2,17 @@
 <view class="container">
     <view class="intro">
       <image src="{{logoUrl}}"></image>
-      <text class="title">日惠优品</text>
-      <text class="title">产品仅作为案例演示，已屏蔽支付系统</text>
+      <text class="title">{{siteName}}</text>
+      <text class="title">{{siteIntro}}</text>
     </view>
-    <view class="wechat-group" wx:if="{{groupWechatUrl}}">
-      <image src="{{groupWechatUrl}}" data-url='{{groupWechatUrl}}' bindtap="onGroupWechatImg"></image>
-      <text class="title">加入微信群：日惠优品粉丝群</text>
+    <view class="contact-way-a" wx:if="{{contactWayAImg}}">
+      <image src="{{contactWayAImg}}" data-url='{{contactWayAImg}}' bindtap="onGroupWechatImg"></image>
+      <text class="title">{{contactWayATitle}}</text>
       <text class="descript">点击图片长按保存二维码识别</text>
     </view>
-    <view class="wechat-official-account" wx:if="{{officialAccountWechatUrl}}">
-      <image src="{{officialAccountWechatUrl}}" data-url='{{officialAccountWechatUrl}}' bindtap="onOfficialAccountWechatImg"></image>
-      <text class="title">关注微信公众号：日惠优品</text>
+    <view class="contact-way-b" wx:if="{{contactWayBImg}}">
+      <image src="{{contactWayBImg}}" data-url='{{contactWayBImg}}' bindtap="onOfficialAccountWechatImg"></image>
+      <text class="title">{{contactWayBTitle}}</text>
       <text class="descript">点击图片长按保存二维码识别</text>
     </view>
 </view>

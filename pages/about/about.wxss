@@ -28,14 +28,14 @@
   padding-bottom: 20rpx;
 }
 
-.wechat-group{
+.contact-way-a{
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 60rpx 20rpx 0rpx 20rpx;
 }
 
-.wechat-group image{
+.contact-way-a image{
   width: 200rpx;
   height: 200rpx;
   padding-bottom: 20rpx;
@@ -43,14 +43,14 @@
 
 
 
-.wechat-official-account{
+.contact-way-b{
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 60rpx 20rpx 0rpx 20rpx;
 }
 
-.wechat-official-account image{
+.contact-way-b image{
   width: 200rpx;
   height: 200rpx;
   padding-bottom: 20rpx;
