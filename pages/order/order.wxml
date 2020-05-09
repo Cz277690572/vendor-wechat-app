@@ -14,9 +14,9 @@
     </view>
     <view class="order-status">
       <text class="order-status-txt unpay" wx:if="{{orderStatus==1}}">待付款</text>
-      <text class="order-status-txt payed" wx:if="{{orderStatus==2}}">已付款</text>
+      <text class="order-status-txt payed" wx:if="{{orderStatus==2}}">待发货</text>
       <text class="order-status-txt done" wx:if="{{orderStatus==3}}">已发货</text>
-      <text class="order-status-txt payed" wx:if="{{orderStatus==4}}">已付款</text>
+      <text class="order-status-txt payed" wx:if="{{orderStatus==4}}">待发货</text>
       <text class="order-status-txt complete" wx:if="{{orderStatus==5}}">已完成</text>
       <text class="order-status-txt close" wx:if="{{orderStatus==6}}">已取消</text>
     </view>

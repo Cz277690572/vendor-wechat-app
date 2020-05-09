@@ -40,18 +40,23 @@
     font-size: 24rpx;
 }
 .order-status-txt.unpay{
+    font-weight: bold;
     color: #B42F2D;
 }
 .order-status-txt.payed{
+    font-weight: bold;
     color: #AB956D;
 }
 .order-status-txt.done{
-    color: #57AB53;
+    font-weight: bold;
+    color: #AB956D;
 }
 .order-status-txt.complete{
+    font-weight: bold;
     color: #57AB53;
 }
 .order-status-txt.close{
+    font-weight: bold;
     color: #ccc;
 }
 
